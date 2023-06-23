@@ -1,0 +1,28 @@
+@use 'objects';
+@use 'components';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --green: #25FF90;
+  --primary-color: var(--green);
+
+  --default-border-radius: 0.25rem;
+  --default-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  color: #545454;
+}
