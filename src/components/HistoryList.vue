@@ -3,7 +3,7 @@
     <div class="bg-white p-6">
       <h2 class="text-2xl font-semibold">List of actions committed</h2>
     </div>
-    <div class="p-6 bg-neutral-100">
+    <div class="p-6 bg-neutral-100 text-lg">
       <ul v-if="store.postsOrderHistory.length" class="o-card bg-white divide-y">
         <HistoryItem v-for="(history, index) in store.postsOrderHistory" :index="index" :history="history"
                      :key="history.postId"/>

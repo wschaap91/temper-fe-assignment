@@ -1,6 +1,6 @@
 <template>
   <li class="post-item o-card">
-    <p class="text-lg">Post {{ props.post.id }}</p>
+    <p class="text-xl">Post {{ props.post.id }}</p>
     <span class="post-item__icons" :class="{'self-stretch': !edge}">
             <button v-if="!(edge === 'FIRST')"
                     :aria-label="`Move post ${post.id} up`"
@@ -36,7 +36,7 @@ const props = defineProps<PostItemProps>();
 
 <style scoped lang="scss">
 .post-item {
-  @apply p-3 bg-white flex items-center justify-between min-h-[6rem];
+  @apply p-3 bg-white flex items-center justify-between min-h-[6.2rem];
 }
 
 .post-item__button {

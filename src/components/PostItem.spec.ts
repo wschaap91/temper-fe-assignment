@@ -26,14 +26,14 @@ describe('Post Item', () => {
 
     it('Should call move down', async () => {
         const mSpy = vi.spyOn(store, 'movePost')
-        const downButton = wrapper.findAll('button').at(1);
+        const downButton = wrapper.findAll('button').at(1)!
         await downButton.trigger('click')
         expect(mSpy).toHaveBeenCalledWith(1, "DOWN");
     })
 
     it('Should call move up', async () => {
         const mSpy = vi.spyOn(store, 'movePost')
-        const downButton = wrapper.findAll('button').at(0);
+        const downButton = wrapper.findAll('button').at(0)!
         await downButton.trigger('click')
         expect(mSpy).toHaveBeenCalledWith(1, "UP");
     })
@@ -42,16 +42,24 @@ describe('Post Item', () => {
         const mSpy = vi.spyOn(store, 'movePost')
         await wrapper.setProps({edge: 'FIRST'});
         const buttons = wrapper.findAll('button');
-        expect(buttons).toHaveLength(1);
-        await buttons.at(0).trigger('click')
-        expect(mSpy).toHaveBeenCalledWith(1, 'DOWN')
+
+        if (buttons.length === 1) {
+            await buttons.at(0)!.trigger('click')
+            expect(mSpy).toHaveBeenCalledWith(1, 'DOWN')
+        } else {
+            expect(buttons).toHaveLength(1);
+        }
     })
     it('Should have only up button', async () => {
         const mSpy = vi.spyOn(store, 'movePost')
         await wrapper.setProps({edge: 'LAST'});
-        const buttons = wrapper.findAll('button');
-        expect(buttons).toHaveLength(1);
-        await buttons.at(0).trigger('click')
-        expect(mSpy).toHaveBeenCalledWith(1, 'UP')
+        const buttons = wrapper.findAll('button')!;
+
+        if (buttons.length === 1) {
+            await buttons.at(0)!.trigger('click')
+            expect(mSpy).toHaveBeenCalledWith(1, 'UP')
+        } else {
+            expect(buttons).toHaveLength(1);
+        }
     })
 })

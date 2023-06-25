@@ -1,9 +1,7 @@
 .c-button {
-  @apply bg-mint-500;
+  @apply bg-mint-500 py-3 px-6;
   border: none;
   border-radius: calc(var(--default-border-radius) * 1.5);
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
   font-weight: 600;
 
   &:hover {
