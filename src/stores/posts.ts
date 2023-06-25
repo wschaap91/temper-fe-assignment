@@ -46,8 +46,8 @@ export const usePostsStore = defineStore('posts', () => {
     function movePost(postId: number, direction: Direction) {
         const postIndex = postsOrder.value.indexOf(postId);
         if (postIndex === -1) {
-            console.log(`Post with ID ${postId} does not exist.`);
-            return;
+            // console.log(`Post with ID ${postId} does not exist.`);
+            throw new Error(`Post with ID ${postId} does not exist`);
         }
         let newPostIndex: number = -1;
         if (direction === 'UP') {
@@ -56,7 +56,7 @@ export const usePostsStore = defineStore('posts', () => {
         if (direction === 'DOWN') {
             newPostIndex = postIndex + 1;
         }
-        if (newPostIndex !== -1) {
+        if (newPostIndex !== -1 && newPostIndex < posts.value.length) {
             const prevPostOrder: PostOrder = [...postsOrder.value];
             posts.value = swapArrayItems(posts.value, postIndex, newPostIndex);
             addPostOrderHistory({
@@ -82,7 +82,7 @@ export const usePostsStore = defineStore('posts', () => {
     }
 
     function timeTravel(index: number) {
-        if (index > postsOrderHistory.value.length - 1) {
+        if (index < 0 || index > postsOrderHistory.value.length - 1) {
             return;
         }
         sortPosts(postsOrderHistory.value[index].postOrder);
@@ -91,3 +91,5 @@ export const usePostsStore = defineStore('posts', () => {
 
     return {posts, postsOrderHistory, postsOrder, addPosts, movePost, timeTravel}
 })
+
+export type PostsStore = ReturnType<typeof usePostsStore>

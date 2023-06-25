@@ -12,11 +12,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --green: #25FF90;
-  --primary-color: var(--green);
+  --mint: #25FF90;
+  --primary-color: var(--mint);
 
   --default-border-radius: 0.25rem;
-  --default-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+  --default-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.10);
+}
+
+* {
+  @apply outline-indigo-500
 }
 
 html {
@@ -25,4 +29,21 @@ html {
 
 body {
   color: #545454;
+  overflow-y: scroll;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transition: translateX(-50px);
+}
+
+.list-leave-active {
+  position: absolute;
 }

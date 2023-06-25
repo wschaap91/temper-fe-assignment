@@ -19,3 +19,15 @@ export function swapArrayItems<T>(array: T[], indexA: number, indexB: number): T
     //Return the new instance of the array
     return newArray;
 }
+
+export type EdgePosition = "FIRST" | "LAST" | false;
+
+export function getArrayEdge(index: number, arrayLength: number): EdgePosition {
+    if (index === 0) {
+        return "FIRST"
+    } else if (index === (arrayLength - 1)) {
+        return "LAST"
+    } else {
+        return false;
+    }
+}

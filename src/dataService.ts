@@ -1,10 +1,10 @@
-export async function fetchData() {
+import {Post} from "./stores/posts.ts";
+
+export async function fetchPosts(): Promise<Post[]> {
     try {
         const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const data = await res.json();
-        return data;
+        return await res.json();
     } catch (error) {
-        console.log('Error', error);
         throw error;
     }
 }
